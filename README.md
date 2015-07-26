@@ -1,4 +1,7 @@
 # C# Unity Syntax Guide
+## Summary
+A starting point for a great C# syntax guide that can be easily shared between team members. Mono and Visual Studio/ReSharper project settings files available for import. 
+
 
 ## Layout
 ### Indentation
