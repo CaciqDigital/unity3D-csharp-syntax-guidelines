@@ -187,7 +187,7 @@ ErrorLevel
 
 Event: Pascal	
 ```c#
-ValueChange
+OnValueChange
 ```
 
 Exception: Pascal
