@@ -16,7 +16,7 @@ public int whoop () {
 ```
 
 ### Ordering
-Elememts must be ordered by access, but lets keep Unity editor vars upfront.
+Elememts must be ordered by access, but lets keep Unity editor vars or implementations first in their relevant sections.
 
 ```c#
 Fields
@@ -39,10 +39,10 @@ public class WeaponManager : MonoBehaviour {
     #region fields
     // unity editor properties
     [SerializeField, Tooltip("A helpful tip")]
-	int minSize = 0;
+    int minSize = 0;
 	
-	[SerializeField, Tooltip("A helpful tip")]
-	int maxSize = 10;
+    [SerializeField, Tooltip("A helpful tip")]
+    int maxSize = 10;
     
     // const first
     cost string someConst = "My Const";
@@ -55,6 +55,7 @@ public class WeaponManager : MonoBehaviour {
     public int CurrentSize {get; set;}
     #endregion
     
+    #region Methods
     #region Unity interface implementations
     void Start () {
     
@@ -63,9 +64,8 @@ public class WeaponManager : MonoBehaviour {
     void Update () {
     
     }
-    #end region
+    #endregion
     
-    #region Methods
     void calculateDistance () {
     }
     
@@ -94,6 +94,60 @@ public class Weapon : IWeapon {
     public override void Shoot () {
     }
     #endregion
+}
+```
+
+### Exposure - NB
+Expose the minimum needed from the class. Don't use public variables, use public properties with private setters instead.
+
+Good
+
+```c#
+public class Watergun : IWeapon {
+    public int RoundsRemaining {get; private set;}
+    
+    public void Fire () {
+    	RoundsRemaining = RoundsRemaining--;
+    }
+}
+```
+
+Bad
+
+```c#
+public class Watergun : IWeapon {
+    public int RoundsRemaining;
+}
+```
+
+Good
+
+```c#
+public class WeaponManager : MonoBehaviour {
+    [SerializeField, Tooltip("The current weapon")]
+    Weapon currentWeapon;
+    
+    public CurrentWeapon {
+    	get {
+    	    return currentWeapon;
+    	}
+    	private set {
+    	    currentWeapon = value;
+    	}
+    }
+    
+    public void ChangeWeapon (Weapon newWeapon) {
+    	currentWeapon = newWeapon;
+    }
+}
+```
+
+Bad
+
+```c#
+public class Watergun : MonoBehaviour {
+    [SerializeField, Tooltip("The current weapon")]
+    public Weapon currentWeapon;
 }
 ```
 
