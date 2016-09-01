@@ -19,26 +19,27 @@ public int whoop () {
 Elememts must be ordered by access, but lets keep Unity editor vars or implementations first in their relevant sections.
 
 Within a class, struct, or interface, elements must be positioned in the following order:
-Constant Fields
-Fields
-Constructors
-Finalizers (Destructors)
-Delegates
-Events
-Enums
-Interfaces
-Properties
-Indexers
-Methods
-Structs
-Classes
+* Constant Fields
+* Fields
+* Constructors
+* Finalizers (Destructors)
+* Delegates
+* Events
+* Enums
+* Interfaces
+* Properties
+* Indexers
+* Methods
+* Structs
+* Classes
 
 Elements of the same type must be positioned in the following order by access level:
-public
-internal
-protected internal
-protected
-private
+* public
+* internal
+* protected internal
+* protected
+* private
+
 All static elements must be placed above all instance elements of the same type.
 
 Example
