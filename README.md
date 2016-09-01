@@ -18,7 +18,8 @@ public int whoop () {
 ### Ordering
 Elememts must be ordered by access, but lets keep Unity editor vars or implementations first in their relevant sections.
 
-```c#
+Within a class, struct, or interface, elements must be positioned in the following order:
+Constant Fields
 Fields
 Constructors
 Finalizers (Destructors)
@@ -31,7 +32,14 @@ Indexers
 Methods
 Structs
 Classes
-```
+
+Elements of the same type must be positioned in the following order by access level:
+public
+internal
+protected internal
+protected
+private
+All static elements must be placed above all instance elements of the same type.
 
 Example
 ```c#
@@ -46,16 +54,19 @@ public class WeaponManager : MonoBehaviour {
     
     // const first
     cost string someConst = "My Const";
-    
+
+     // public
+    public int CurrentSize {get; set;}
+
     // private 
     int counter;
     int[] someInt;
-    
-    // public
-    public int CurrentSize {get; set;}
     #endregion
     
     #region Methods
+    public void Shoot () {
+    }
+
     #region Unity interface implementations
     void Start () {
     
@@ -68,9 +79,6 @@ public class WeaponManager : MonoBehaviour {
     
     void calculateDistance () {
     }
-    
-    public void Shoot () {
-    }
     #endregion
 }
 
@@ -79,19 +87,19 @@ public class Weapon : IWeapon {
     // const first
     cost string someConst = "My Const";
     
+    // public
+    public int CurrentSize {get; set;}
+
     // private 
     int counter;
     int[] someInt;
-    
-    // public
-    public int CurrentSize {get; set;}
     #endregion
     
     #region Methods
-    void calculateDistance () {
-    }
-    
     public override void Shoot () {
+    }
+
+    void calculateDistance () {
     }
     #endregion
 }
