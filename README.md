@@ -2,6 +2,8 @@
 ## Summary
 A starting point for a great C# syntax guide that can be easily shared between team members. Mono and Visual Studio/ReSharper project settings files available for import. 
 
+## File Management
+Use one class per source file. Avoid inner classes.
 
 ## Layout
 ### Indentation
@@ -13,6 +15,88 @@ public int whoop () {
 }
 ```
 
+### Ordering
+Elememts must be ordered by access, but lets keep Unity editor vars upfront.
+
+```c#
+Fields
+Constructors
+Finalizers (Destructors)
+Delegates
+Events
+Enums
+Interfaces
+Properties
+Indexers
+Methods
+Structs
+Classes
+```
+
+Example
+```c#
+public class WeaponManager : MonoBehaviour {
+    #region fields
+    // unity editor properties
+    [SerializeField, Tooltip("A helpful tip")]
+	int minSize = 0;
+	
+	[SerializeField, Tooltip("A helpful tip")]
+	int maxSize = 10;
+    
+    // const first
+    cost string someConst = "My Const";
+    
+    // private 
+    int counter;
+    int[] someInt;
+    
+    // public
+    public int CurrentSize {get; set;}
+    #endregion
+    
+    #region Unity interface implementations
+    void Start () {
+    
+    }
+    
+    void Update () {
+    
+    }
+    #end region
+    
+    #region Methods
+    void calculateDistance () {
+    }
+    
+    public void Shoot () {
+    }
+    #endregion
+}
+
+public class Weapon : IWeapon {
+    #region fields
+    // const first
+    cost string someConst = "My Const";
+    
+    // private 
+    int counter;
+    int[] someInt;
+    
+    // public
+    public int CurrentSize {get; set;}
+    #endregion
+    
+    #region Methods
+    void calculateDistance () {
+    }
+    
+    public override void Shoot () {
+    }
+    #endregion
+}
+```
+
 ### Braces
 Braces should be on the same line preceded by a space - K&R style
 
@@ -21,7 +105,7 @@ public int whoop () {
     // ...
 }
 ```
-if/for loops should always have an accompanying opening and closing brace
+Conditional statements and loops should always have an accompanying opening and closing brace - irrespective of the number of lines required.
 
 ```c#
 if (troop.Name == "Vader") {
@@ -234,6 +318,23 @@ Public instance field: Pascal // rather use a property if you can
 ```c#
 RedValue
 ```
+## Declarations
+
+Declare each variable on a new line.
+
+Good
+
+```c#
+int noOflevels;
+int currentLevels;
+int count;
+```
+
+Bad
+
+```c#
+int noOflevels, currentLevels, count;
+```
 
 ## Implicitly Typed Local Variables
 
@@ -284,12 +385,20 @@ Good
 
 ```c#
 // this is a comment
-// TODO: make this configurable
 ```
 
 Bad
 
 ```c#
 //this is a comment
-//TODO: make this configurable
+```
+
+## Spelling
+Use US English spelling.
+
+## TASKS
+```c#
+//FIXME: reminder/call to fix
+//TODO: reminder to complete something
+//HACK: temporary fix
 ```
