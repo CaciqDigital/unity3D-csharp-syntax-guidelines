@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PolicySet name="Invasion Day">
+  <TextStylePolicy inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp">
+    <FileWidth>120</FileWidth>
+  </TextStylePolicy>
+  <CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp">
+    <IndentSwitchBody>True</IndentSwitchBody>
+    <NamespaceBraceStyle>EndOfLine</NamespaceBraceStyle>
+    <ClassBraceStyle>EndOfLine</ClassBraceStyle>
+    <InterfaceBraceStyle>EndOfLine</InterfaceBraceStyle>
+    <StructBraceStyle>EndOfLine</StructBraceStyle>
+    <MethodBraceStyle>EndOfLine</MethodBraceStyle>
+    <ConstructorBraceStyle>EndOfLine</ConstructorBraceStyle>
+    <DestructorBraceStyle>EndOfLine</DestructorBraceStyle>
+    <ElseNewLinePlacement>NewLine</ElseNewLinePlacement>
+    <ElseIfNewLinePlacement>DoNotCare</ElseIfNewLinePlacement>
+    <CatchNewLinePlacement>NewLine</CatchNewLinePlacement>
+    <FinallyNewLinePlacement>NewLine</FinallyNewLinePlacement>
+    <WhileNewLinePlacement>NewLine</WhileNewLinePlacement>
+    <ArrayInitializerWrapping>DoNotChange</ArrayInitializerWrapping>
+    <NewLineBeforeConstructorInitializerColon>SameLine</NewLineBeforeConstructorInitializerColon>
+    <AfterDelegateDeclarationParameterComma>True</AfterDelegateDeclarationParameterComma>
+    <IndexerArgumentWrapping>DoNotWrap</IndexerArgumentWrapping>
+    <NewLineAferIndexerOpenBracket>SameLine</NewLineAferIndexerOpenBracket>
+    <IndexerClosingBracketOnNewLine>SameLine</IndexerClosingBracketOnNewLine>
+  </CSharpFormattingPolicy>
+</PolicySet>
