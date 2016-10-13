@@ -160,6 +160,9 @@ public class Watergun : MonoBehaviour {
 }
 ```
 
+### Properties VS Methods
+In general, methods represent actions and properties represent data. Properties are meant to be used like fields, meaning that properties should not be computationally complex or produce side effects. When it does not violate the following guidelines, consider using a property, rather than a method.
+
 ### Braces
 Braces should be on the same line preceded by a space - K&R style
 
