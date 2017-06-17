@@ -140,9 +140,6 @@ public class WeaponManager : MonoBehaviour {
     	get {
     	    return currentWeapon;
     	}
-    	private set {
-    	    currentWeapon = value;
-    	}
     }
     
     public void ChangeWeapon (Weapon newWeapon) {
@@ -295,6 +292,32 @@ public class PlayerManager : MonoBehaviour {
 ```
 
 **2. Between Member declarations**
+Good
+```c#
+public class PlayerManager : MonoBehaviour {
+    #region Fields
+    
+    int count;
+    
+    string name;
+    
+    IList<Weapon> weapons;
+    
+    #endregion
+}
+```
+Bad
+```c#
+public class PlayerManager : MonoBehaviour {
+    #region Fields
+    
+    int count; 
+    string name;
+    IList<Weapon> weapons;
+    
+    #endregion
+}
+```
 
 Good
 
@@ -322,7 +345,46 @@ public class PlayerManager : MonoBehaviour {
     }  
 ```
 
+**2. Before return statements **
+Good
 
+```c#
+public class PlayerManager : MonoBehaviour {
+    #region Methods
+    
+    static Weapon AddWeapon (Weapon weapon) {
+        weapon.Agent = this;
+	weapon.Initialise();
+	weapons.Add(weapon);
+	
+	return weapon;
+    }
+
+    public static void Visualize () {
+        weapon.Agent = this;
+	weapon.Initialise();
+	weapons.Add(weapon);
+	return weapon;
+    }
+    
+    #endregion
+```
+
+Bad
+
+```c#
+public class PlayerManager : MonoBehaviour {
+    #region Methods
+    
+    public static void Visualize () {
+        weapon.Agent = this;
+	weapon.Initialise();
+	weapons.Add(weapon);
+	return weapon;
+    }
+    
+    #endregion
+```
 
 ## Casing
 Class: Pascal	
@@ -392,7 +454,9 @@ Good
 
 ```c#
 int noOflevels;
+
 int currentLevels;
+
 int count;
 ```
 
@@ -443,6 +507,53 @@ Occasionally, it is necessary to provide a class name that begins with the lette
 
 Where appropriate, use a compound word to name a derived class. The second part of the derived class's name should be the name of the base class. For example, ApplicationException is an appropriate name for a class derived from a class named Exception, because ApplicationException is a kind of Exception. Use reasonable judgment in applying this rule. For example, Button is an appropriate name for a class derived from Control. Although a button is a kind of control, making Control a part of the class name would lengthen the name unnecessarily.
 
+## Member Naming Guidelines
+# Methods
+Use verb noun combinations for methods. 
+
+Good
+```c#
+CreateEmployee
+
+AddWeapon
+
+InitialiseProjectile
+```
+
+Bad
+```c#
+EmployeeCreate
+
+WeaponAdd
+
+ProjectileInitialise
+```
+# Fields
+1. Don't use underscores
+2. Avoid abbreivations
+3. Following case guidelines
+4. bool members can be prefixed with is or has i.e. isReady, hasFired,
+5. Events should be prefixed with On i.e. OnFire, OnMove
+6. Do not prefix methods with On, save that for events - see 5. above 
+
+Good
+```c#
+Weapon weapon
+
+HomingProjectile homingProjectile
+
+public event Action OnFire;
+```
+
+Bad
+```c#
+Weapon _myWeapon;
+
+HomingProjectile hp;
+
+public event Action Fire;
+```
+
 ## Commenting
 
 1. Single space before the start of the comment
@@ -464,7 +575,7 @@ Use US English spelling.
 
 ## TASKS
 ```c#
-//FIXME: reminder/call to fix
-//TODO: reminder to complete something
-//HACK: temporary fix
+// FIXME: reminder/call to fix
+// TODO: reminder to complete something
+// HACK: temporary fix
 ```
