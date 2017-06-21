@@ -46,6 +46,7 @@ Example
 ```c#
 public class WeaponManager : MonoBehaviour {
     #region fields
+    
     // unity editor properties
     [SerializeField, Tooltip("A helpful tip")]
     int minSize = 0;
@@ -62,13 +63,16 @@ public class WeaponManager : MonoBehaviour {
     // private 
     int counter;
     int[] someInt;
+    
     #endregion
     
     #region Methods
+    
     public void Shoot () {
     }
 
     #region Unity interface implementations
+    
     void Start () {
     
     }
@@ -76,15 +80,18 @@ public class WeaponManager : MonoBehaviour {
     void Update () {
     
     }
+    
     #endregion
     
     void calculateDistance () {
     }
+    
     #endregion
 }
 
 public class Weapon : IWeapon {
     #region fields
+    
     // const first
     cost string someConst = "My Const";
     
@@ -94,14 +101,17 @@ public class Weapon : IWeapon {
     // private 
     int counter;
     int[] someInt;
+    
     #endregion
     
     #region Methods
+    
     public override void Shoot () {
     }
 
     void calculateDistance () {
     }
+    
     #endregion
 }
 ```
