@@ -3,7 +3,7 @@
 A starting point for a great C# syntax guide that can be easily shared between team members. Mono and Visual Studio/ReSharper project settings files available for import. 
 
 ## File Management
-Use one class per source file. Avoid inner classes.
+Use one class per source file. Avoid inner classes. Stick to single responsibility.
 
 ## Layout
 ### Indentation
@@ -14,7 +14,59 @@ public int whoop () {
     // ...
 }
 ```
+### Namespaces
+Don't pollute global namespaces. Always use namespaces within the project - consider how many classes could be named "Config" or "Stats" in a solution with many plugins and 3rd party libraries.
 
+Good
+```c#
+using System;
+
+namespace MyAwesomeCompany.MyAweSomeGame.Configuration {
+    public class Config () {
+       // ...
+    }
+}
+```
+
+Bad
+```c#
+using System;
+
+public class Config () {
+    // ...
+}
+```
+
+Always remove redundant namespace qualifiers to keep code clean and easy to follow.
+
+Good
+```c#
+using System;
+using MyAwesomeCompany.MyAweSomeGame;
+using MyAwesomeCompany.MyAweSomeGame.Repositories;
+
+namespace MyAwesomeCompany.MyAweSomeGame.Services {
+    public class PlayerService (PlayerRepository playerRepository) {
+	var foo = Configuration.Foo;
+        var bar = Configuration.Bar;
+	var baz = Configuration.Baz;
+	...	
+    }
+}
+```
+
+Bad
+```c#
+using System;
+
+namespace MyAwesomeCompany.MyAweSomeGame.Services {
+    public class PlayerService (MyAwesomeCompany.MyAweSomeGame.Repositories.PlayerRepository playerRepository) {
+	var foo = MyAwesomeCompany.MyAweSomeGame.Configuration.Config.Foo;
+        var bar = MyAwesomeCompany.MyAweSomeGame.Configuration.Config.Bar;
+	var baz = MyAwesomeCompany.MyAweSomeGame.Configuration.Config.Baz;
+    }
+}
+```
 ### Ordering
 Elememts must be ordered by access, but lets keep Unity editor vars or implementations first in their relevant sections.
 
