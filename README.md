@@ -641,3 +641,62 @@ Use US English spelling.
 // TODO: reminder to complete something
 // HACK: temporary fix
 ```
+
+## Inversion of if
+Limit nested if statememnts to reduce nesting.
+
+Good 
+
+```c#
+if (!isSelected) {
+// handler
+
+return;
+}
+
+if (!hasFunds) {
+// handler
+
+return;
+}
+
+if (!hasCapacity) {
+// handler
+
+return;
+}
+
+if (state != state.Ready) {
+// handler
+
+return;
+}
+
+// continue with process 
+```
+
+Bad
+
+```c#
+  if (isSelected) {
+	if (hasFunds) {
+	    if (hasCapacity) {
+		if (state == state.Ready) {
+		    // continue with process
+		}
+		else {
+		    // handler
+		}
+	    }
+	    else {
+		// handler
+	    }
+	}
+	else {
+	    // handler
+	}
+    }
+    else {
+	// handler
+    }
+```
