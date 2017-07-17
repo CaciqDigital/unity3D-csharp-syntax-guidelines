@@ -1,4 +1,6 @@
 # C# Unity Syntax Guide
+[link text](#reduce-nesting)
+
 ## Summary
 A starting point for a great C# syntax guide that can be easily shared between team members. Mono and Visual Studio/ReSharper project settings files available for import. 
 
@@ -642,7 +644,7 @@ Use US English spelling.
 // HACK: temporary fix
 ```
 
-<a name="reduce-nesting">## Inversion of if to reduce nesting</a>
+<a name="reduce-nesting">## Inversion of "if" to reduce nesting</a>
 Limit nested if statememnts to reduce nesting.
 
 Good 
