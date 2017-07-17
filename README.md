@@ -642,7 +642,7 @@ Use US English spelling.
 // HACK: temporary fix
 ```
 
-## Inversion of if to reduce nesting
+<a name="reduce-nesting">## Inversion of if to reduce nesting</a>
 Limit nested if statememnts to reduce nesting.
 
 Good 
@@ -678,25 +678,24 @@ if (state != state.Ready) {
 Bad
 
 ```c#
-  if (isSelected) {
+if (isSelected) {
 	if (hasFunds) {
-	    if (hasCapacity) {
-		if (state == state.Ready) {
-		    // continue with process
+		if (hasCapacity) {
+			if (state == state.Ready) {
+				// continue with process
+			}
+			else {
+				// handler
+			}
 		}
 		else {
-		    // handler
+			// handler
 		}
-	    }
-	    else {
-		// handler
-	    }
 	}
 	else {
-	    // handler
+		// handler
 	}
-    }
-    else {
+else {
 	// handler
-    }
+}
 ```
