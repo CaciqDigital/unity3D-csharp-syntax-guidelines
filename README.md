@@ -3,9 +3,11 @@
 ## Summary
 A starting point for a great C# syntax guide that can be easily shared between team members. Mono and Visual Studio/ReSharper project settings files available for import. 
 
-<a href="contents">## Contents</a>
-[link Reduce Nesting](#reduce-nesting)
-[link Member Ordering](#member-ordering)
+<a name="contents">## Contents</a>
+
+[Reduce Nesting](#reduce-nesting)
+
+[Member Ordering](#member-ordering)
 
 ## File Management
 Use one class per source file. Avoid inner classes. Stick to single responsibility.
@@ -19,6 +21,9 @@ public int whoop () {
     // ...
 }
 ```
+
+[Top](#contents)
+
 ### Namespaces
 Don't pollute global namespaces. Always use namespaces within the project - consider how many classes could be named "Config" or "Stats" in a solution with many plugins and 3rd party libraries.
 
@@ -72,7 +77,10 @@ namespace MyAwesomeCompany.MyAweSomeGame.Services {
     }
 }
 ```
-<a href="member-ordering">### Member Ordering</a>
+
+[Top](#contents)
+
+<a name="member-ordering">### Member Ordering</a>
 Elememts must be ordered by access, but lets keep Unity editor vars or implementations first in their relevant sections.
 
 Within a class, struct, or interface, elements must be positioned in the following order:
@@ -172,7 +180,8 @@ public class Weapon : IWeapon {
     #endregion
 }
 ```
-[link Top](#top)
+
+[Top](#contents)
 
 ### Exposure - NB
 Expose the minimum needed from the class. Don't use public variables, use public properties with private setters instead.
