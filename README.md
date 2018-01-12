@@ -3,11 +3,14 @@
 ## Summary
 A starting point for a great C# syntax guide that can be easily shared between team members. Mono and Visual Studio/ReSharper project settings files available for import. 
 
-<a name="contents">## Contents</a>
+<a name="contents"></a>
+## Contents
 
 [Reduce Nesting](#reduce-nesting)
 
 [Member Ordering](#member-ordering)
+
+[Exposure](#exposure)
 
 ## File Management
 Use one class per source file. Avoid inner classes. Stick to single responsibility.
@@ -80,7 +83,9 @@ namespace MyAwesomeCompany.MyAweSomeGame.Services {
 
 [Top](#contents)
 
-<a name="member-ordering">### Member Ordering</a>
+<a name="member-ordering"></a>
+## Member Ordering
+
 Elememts must be ordered by access, but lets keep Unity editor vars or implementations first in their relevant sections.
 
 Within a class, struct, or interface, elements must be positioned in the following order:
@@ -183,6 +188,7 @@ public class Weapon : IWeapon {
 
 [Top](#contents)
 
+<a name="exposure"></a>
 ### Exposure - NB
 Expose the minimum needed from the class. Don't use public variables, use public properties with private setters instead.
 
